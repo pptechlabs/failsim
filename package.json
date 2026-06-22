@@ -1,0 +1,19 @@
+{
+  "name": "failsim-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "API Failure Simulator for developers - Monorepo",
+  "scripts": {
+    "build:core": "cd packages/core && npm install && npm run build",
+    "test:core": "cd packages/core && npm test",
+    "build:dashboard": "cd packages/dashboard && npm install && npm run build",
+    "build": "npm run build:core && npm run build:dashboard",
+    "clean": "rm -rf packages/*/dist packages/*/node_modules examples/*/dist examples/*/node_modules"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
