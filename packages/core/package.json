@@ -55,7 +55,7 @@
   "bugs": {
     "url": "https://github.com/pptechlabs/failsim/issues"
   },
-  "homepage": "https://github.com/pptechlabs/failsim#readme",
+  "homepage": "https://github.com/pptechlabs/failsim/blob/main/README.md",
   "peerDependencies": {
     "axios": ">=1.0.0",
     "express": ">=4.0.0"

@@ -1,6 +1,6 @@
 # FailSim 💥
 
-**API Failure Simulator for Developers**
+**API Failure Simulator for developers**
 
 FailSim is a powerful developer tool that intercepts HTTP requests and simulates real-world API failures like timeouts, 500 errors, slow responses, rate limits, and malformed JSON — with zero config changes to your existing code.
 
@@ -11,14 +11,13 @@ FailSim is a powerful developer tool that intercepts HTTP requests and simulates
 
 - 🎯 **Zero Configuration** - Works with existing fetch, axios, and Express code
 - 🔧 **Multiple Adapters** - Support for fetch, axios, and Express middleware
-- 🎲 **Probabilistic Failures** - Configure failure rates (e.g., 30% chance)
+- 🎲 **Probabilistic Failures** - Configure failure rates such as 30% chance
 - ⏱️ **Delay Simulation** - Add network latency to requests
-- 📊 **Built-in Dashboard** - Visual interface to manage rules and view logs
 - 🎨 **Preset Scenarios** - One-line presets for common failure patterns
 - 🌐 **Pattern Matching** - Wildcard and regex URL matching
-- 📈 **Request Logging** - Track all intercepted requests
+- 📈 **Request Logging** - Track intercepted requests and failure stats
 - 🔄 **Method Filtering** - Target specific HTTP methods
-- 🎭 **Multiple Failure Types** - 500, 503, 404, 429, timeout, slow, malformed, and more
+- 🎭 **Multiple Failure Types** - 500, 503, 404, 429, timeout, slow, malformed, empty, and network errors
 
 ## 📦 Installation
 
@@ -122,16 +121,16 @@ Quick one-line configurations for common scenarios:
 import { preset } from 'failsim';
 
 // Available presets
-preset('slow-3g')           // 2s delay on all requests
-preset('server-down')       // 503 on all requests
-preset('flaky')             // 30% random failures
-preset('rate-limited')      // 429 after 5 requests
-preset('chaos')             // Random mix of all failures
-preset('offline')           // Network errors on all
-preset('intermittent-timeouts') // 20% timeout chance
-preset('bad-gateway')       // 502 errors
-preset('malformed-responses') // Broken JSON
-preset('empty-responses')   // Empty responses
+preset('slow-3g');                // 2s delay on all requests
+preset('server-down');            // 503 on all requests
+preset('flaky');                  // 30% random failures
+preset('rate-limited');           // 429 after 5 successful requests
+preset('chaos');                  // Random mix of failures
+preset('offline');                // Network errors on all requests
+preset('intermittent-timeouts');  // 20% timeout chance
+preset('bad-gateway');            // 502 Bad Gateway responses
+preset('malformed-responses');    // Broken JSON responses
+preset('empty-responses');        // Empty responses
 ```
 
 ## 🔧 Configuration
@@ -212,23 +211,6 @@ FailSim.init({
   },
 });
 ```
-
-## 📊 Dashboard
-
-FailSim includes a beautiful web dashboard for visual rule management:
-
-```bash
-cd packages/dashboard
-npm install
-npm run dev
-```
-
-The dashboard provides:
-- 🎛️ Visual rule builder
-- 📈 Real-time request charts
-- 📝 Live request logs
-- 🎨 One-click preset activation
-- 📊 Failure statistics
 
 ## 🔍 API Reference
 
@@ -324,15 +306,14 @@ describe('API Error Handling', () => {
 
 ## 📚 Examples
 
-Check out the `/examples` directory for complete working examples:
+Check out the [`examples/`](examples/) directory for complete working examples:
 
-- **React App** - Client-side failure simulation
-- **Express Server** - Server-side middleware
-- **Next.js** - Full-stack application
+- **React App** - Client-side failure simulation with [`FailSim.init()`](packages/core/src/adapters/fetch.ts)
+- **Express Server** - Server-side middleware using [`failSimMiddleware()`](packages/core/src/adapters/express.ts)
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
+Contributions are welcome. Open an issue or submit a pull request with improvements to the core package or examples.
 
 ## 📄 License
 
@@ -340,10 +321,9 @@ MIT © PPTechLabs
 
 ## 🔗 Links
 
-- [Documentation](https://failsim.dev)
-- [GitHub](https://github.com/yourusername/failsim)
+- [GitHub](https://github.com/pptechlabs/failsim)
 - [npm](https://www.npmjs.com/package/failsim)
-- [Issues](https://github.com/yourusername/failsim/issues)
+- [Issues](https://github.com/pptechlabs/failsim/issues)
 
 ## ⭐ Show Your Support
 
